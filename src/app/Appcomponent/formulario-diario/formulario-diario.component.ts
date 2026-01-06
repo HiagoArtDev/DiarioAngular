@@ -50,7 +50,21 @@ export class FormularioDiarioComponent {
 
   cafeManha: string[] = ['Vitamina', 'Fruta', 'Sanduiche Natural', 'Iorgute'];
 
-  almoco: string[] = ['Frango', 'Peixe', 'Bisteca', 'Coração', 'Carne', 'Ovo'];
+  almoco: string[] = [
+    'Arroz',
+    'Salada',
+    'Frango',
+    'Peixe',
+    'Bisteca',
+    'Coração',
+    'Carne',
+    'Ovo',
+    'Feijão',
+    'Pure',
+    'Batata',
+    'Batata-Frita',
+    'Nada',
+  ];
 
   lanche: string[] = [
     'Vitamina',
@@ -61,9 +75,24 @@ export class FormularioDiarioComponent {
     'Pizza',
     'Hamburguer',
     'Coca-Cola',
+    'Nada',
   ];
 
-  janta: string[] = ['Frango', 'Peixe', 'Bisteca', 'Coração', 'Carne', 'Ovo'];
+  janta: string[] = [
+    'Arroz',
+    'Salada',
+    'Feijão',
+    'Frango',
+    'Peixe',
+    'Bisteca',
+    'Coração',
+    'Carne',
+    'Ovo',
+    'Pure',
+    'Batata',
+    'Batata-Frita',
+    'Nada',
+  ];
 
   saude: string[] = [
     'Whey',
@@ -72,7 +101,7 @@ export class FormularioDiarioComponent {
     'Hidratação',
     'LowCarb',
     'HighProtein',
-    'Lanche',
+    'Nada',
   ];
 
   atividadefisica: string[] = [
@@ -81,9 +110,10 @@ export class FormularioDiarioComponent {
     'HIT',
     'FUT',
     'Calistenia',
+    'Nada',
   ];
 
-  estudoHoras = ['1', '2', '3', '4'];
+  estudoHoras = ['0', '1', '2', '3', '4'];
 
   jogos: string[] = ['Chess', 'Rivals', 'BF6', 'Outros'];
 
@@ -127,6 +157,24 @@ export class FormularioDiarioComponent {
     });
   }
 
+  resetform() {
+    this.registroForm.reset({
+      dataRegistro: new Date(),
+      horasSono: 0,
+      cafeManha: [''],
+      almoco: [''],
+      lanche: [''],
+      janta: [''],
+      saude: [''],
+      atividadefisica: [''],
+      estudoHoras: [''],
+      jogos: [''],
+      distracao: [''],
+      gastosTotal: 0,
+      observacoes: [''],
+    });
+  }
+
   salvar() {
     if (this.registroForm.valid) {
       const dadosBrutos = this.registroForm.value;
@@ -154,7 +202,8 @@ export class FormularioDiarioComponent {
           this.snackBar.open('Relatório salvo com sucesso!', 'Fechar', {
             duration: 5000,
           });
-          this.registroForm.reset(); // Opcional: limpa o form após sucesso
+          // this.registroForm.reset(); // Opcional: limpa o form após sucesso
+          this.resetform(); //limpa o form após sucesso
         },
         error: (err) => {
           console.error('Erro na API:', err);
