@@ -1,19 +1,53 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav mode="side" opened class="sidenav">
     <mat-toolbar color="primary">Relatório Diário</mat-toolbar>
+
     <mat-nav-list>
-      <a mat-list-item href="#">
-        <mat-icon matListItemIcon>home</mat-icon>
-        <span matListItemTitle>Início</span>
-      </a>
-      <a mat-list-item href="#">
-        <mat-icon matListItemIcon>person</mat-icon>
-        <span matListItemTitle>Perfil</span>
-      </a>
-      <a mat-list-item routerLink="/formulario-diario">
-        <mat-icon matListItemIcon>receipt</mat-icon>
-        <span matListItemTitle>Formulário</span>
-      </a>
+      <mat-expansion-panel class="mat-elevation-z0 menu-painel">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon class="menu-icon">home</mat-icon>
+            <h4 class="tituloPaiMenu">Home</h4>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <a mat-list-item routerLink="/listagem-relatorios">
+          <mat-icon matListItemIcon>dashboard</mat-icon>
+          <span matListItemTitle>DashBoard</span>
+        </a>
+        <a mat-list-item routerLink="/listagem-relatorios">
+          <mat-icon matListItemIcon>people</mat-icon>
+          <span matListItemTitle>Usuários</span>
+        </a>
+        <a mat-list-item routerLink="/listagem-relatorios">
+          <mat-icon matListItemIcon>list</mat-icon>
+          <span matListItemTitle>To List</span>
+        </a>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="mat-elevation-z0 menu-painel">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon class="menu-icon">history_edu</mat-icon>
+            <h4 class="tituloPaiMenu">Relatório Diário</h4>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <a
+          mat-list-item
+          routerLink="/formulario-diario"
+          routerLinkActive="active-link"
+        >
+          <mat-icon matListItemIcon>receipt</mat-icon>
+          <span matListItemTitle>Formulário</span>
+        </a>
+
+        <a mat-list-item routerLink="/listagem-relatorios">
+          <mat-icon matListItemIcon>view_list</mat-icon>
+          <span matListItemTitle>Registros</span>
+        </a>
+      </mat-expansion-panel>
+
       <a mat-list-item href="#">
         <mat-icon matListItemIcon>settings</mat-icon>
         <span matListItemTitle>Configurações</span>

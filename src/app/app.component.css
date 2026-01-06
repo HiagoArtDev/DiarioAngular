@@ -8,7 +8,7 @@
 }
 
 .spacer {
-  flex: 1 1 auto; 
+  flex: 1 1 auto;
 }
 
 .content {
@@ -18,4 +18,31 @@
 :host {
   display: block;
   height: 100%;
+}
+
+.tituloPaiMenu {
+  margin: 0px;
+}
+
+/* Remove a sombra e as bordas padrão do painel dentro da sidebar */
+.menu-painel {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Alinha o ícone principal do menu */
+.menu-icon {
+  margin-right: 16px;
+  color: #ffffff; /* Seu Cyan */
+}
+
+/* Recuo para os itens que estão dentro do submenu */
+.mat-expansion-panel-body {
+  padding: 0 0 0 16px !important;
+}
+
+/* Cor de destaque quando o link está ativo */
+.active-link {
+  color: #ff9800 !important; /* Seu Orange */
+  background-color: rgba(255, 152, 0, 0.1);
 }
