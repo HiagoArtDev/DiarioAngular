@@ -1,6 +1,6 @@
-<mat-card class="form-card">
+<mat-card class="form-card"> 
   <mat-card-header>
-    <mat-card-title style="color: white;">Registro Diário</mat-card-title>
+    <mat-card-title style="color: white">Registro Diário</mat-card-title>
   </mat-card-header>
 
   <form [formGroup]="registroForm" (ngSubmit)="salvar()" class="registro-grid">
@@ -72,7 +72,7 @@
 
     <mat-form-field class="space" appearance="outline" color="primary">
       <mat-label>Lanche</mat-label>
-       <mat-select formControlName="lanche" multiple>
+      <mat-select formControlName="lanche" multiple>
         <div class="select-all-container">
           <mat-checkbox
             color="primary"
@@ -91,7 +91,7 @@
 
     <mat-form-field class="space" appearance="outline" color="primary">
       <mat-label>Janta</mat-label>
-       <mat-select formControlName="janta" multiple>
+      <mat-select formControlName="janta" multiple>
         <div class="select-all-container">
           <mat-checkbox
             color="primary"
@@ -134,7 +134,9 @@
           <mat-checkbox
             color="primary"
             [checked]="isAllSelected('atividadefisica', atividadefisica)"
-            (change)="toggleAll('atividadefisica', atividadefisica, $event.checked)"
+            (change)="
+              toggleAll('atividadefisica', atividadefisica, $event.checked)
+            "
           >
             Selecionar Todos
           </mat-checkbox>
@@ -157,7 +159,7 @@
 
     <mat-form-field class="space" appearance="outline" color="primary">
       <mat-label>Jogos</mat-label>
-     <mat-select formControlName="jogos" multiple>
+      <mat-select formControlName="jogos" multiple>
         <div class="select-all-container">
           <mat-checkbox
             color="primary"

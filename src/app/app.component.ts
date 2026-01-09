@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet, RouterLink } from '@angular/router';
+import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 
 import { CommonModule } from '@angular/common';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -21,8 +21,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatButtonModule,
     RouterOutlet,
     RouterLink,
-    MatExpansionModule
-  ],
+    MatExpansionModule,
+    RouterLinkActive
+],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
