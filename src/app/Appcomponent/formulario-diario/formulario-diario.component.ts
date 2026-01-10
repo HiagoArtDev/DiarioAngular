@@ -48,7 +48,13 @@ export class FormularioDiarioComponent {
 
   horasSono = ['6', '7', '8', '9'];
 
-  cafeManha: string[] = ['Vitamina', 'Fruta', 'Sanduiche Natural', 'Iorgute'];
+  cafeManha: string[] = [
+    'Vitamina',
+    'Fruta',
+    'Sanduiche Natural',
+    'Iorgute',
+    'Pão de Sal',
+  ];
 
   almoco: string[] = [
     'Arroz',
@@ -63,6 +69,10 @@ export class FormularioDiarioComponent {
     'Pure',
     'Batata',
     'Batata-Frita',
+    'Linguiça-Frita',
+    'Fritura',
+    'Carne Vermelha',
+    'Macarrão',
     'Nada',
   ];
 
@@ -75,6 +85,9 @@ export class FormularioDiarioComponent {
     'Pizza',
     'Hamburguer',
     'Coca-Cola',
+    'Pão de Sal',
+    'Motadela',
+    'Quejo Mussarela',
     'Nada',
   ];
 
@@ -91,6 +104,11 @@ export class FormularioDiarioComponent {
     'Pure',
     'Batata',
     'Batata-Frita',
+    'Linguiça-Frita',
+    'Fritura',
+    'Carne Vermelha',
+    'Macarrão',
+
     'Nada',
   ];
 

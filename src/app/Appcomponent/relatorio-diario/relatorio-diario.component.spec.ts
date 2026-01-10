@@ -8,10 +8,9 @@ describe('RelatorioDiarioComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RelatorioDiarioComponent]
-    })
-    .compileComponents();
-    
+      imports: [RelatorioDiarioComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(RelatorioDiarioComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

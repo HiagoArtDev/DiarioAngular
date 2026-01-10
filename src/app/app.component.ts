@@ -22,7 +22,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     RouterOutlet,
     RouterLink,
     MatExpansionModule,
-    RouterLinkActive
+    RouterLinkActive,
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
