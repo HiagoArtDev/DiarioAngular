@@ -1,27 +1,209 @@
-.form-card {
-  max-width: 100%;
-  padding: 20px;
+.responsive-table {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
 }
 
-.container {
-  padding: 20px;
+.form-header-card {
+  margin-bottom: 10px;
 }
 
-.full-width {
-  width: 100%;
-  margin-bottom: 15px;
+/* Centraliza e distribui os itens */
+.table-toolbar {
+  display: flex;
+  justify-content: space-between; /* Empurra os blocos para as extremidades */
+  align-items: center; /* Alinha verticalmente no centro */
+  padding: 10px 16px;
+  background-color: #fff;
+  border-radius: 8px 8px 0 0;
 }
 
-table {
-  width: 100%;
+/* Garante que o campo de busca não ocupe a tela toda */
+.search-field {
+  width: 350px;
+  margin-bottom: -1.25em; /* Ajuste técnico para o Material Outline não criar espaço extra embaixo */
 }
 
-.mat-mdc-header-cell {
-  background-color: #f5f5f5;
-  color: #ffffff;
-  font-size: 17px;
+/* Agrupa os botões de exportação */
+.export-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px; /* Espaçamento pequeno entre os botões */
 }
 
-.mat-mdc-row:hover {
-  background-color: rgba(0, 188, 212, 0.05);
+.toolbar-label {
+  font-size: 11px;
+  font-weight: bold;
+  color: #777;
+  text-transform: uppercase;
+  margin-right: 8px;
+}
+
+.search-field {
+  width: 300px;
+}
+
+.hover-row:hover {
+  background-color: #f9f9f9;
+  transition: background 0.2s;
+}
+
+/* .date-cell {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  .year-text { font-size: 10px; color: #777; }
+} */
+
+.cell-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  .mini-icon {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    color: #673ab7;
+  }
+}
+
+.study-badge {
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 12px;
+  &.no-study {
+    background: #f5f5f5;
+    color: #999;
+  }
+}
+
+.price-text {
+  font-weight: 500;
+  color: #c2185b;
+}
+
+.truncate-text {
+  display: inline-block;
+  max-width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Estilo para a célula de ações */
+.action-cell {
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Botão de Edição - Estilo "Icon Button" Limpo */
+.btn-edit {
+  color: #3f51b5 !important; /* Indigo */
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Botão de Excluir - Estilo "Icon Button" Limpo */
+.btn-delete {
+  color: #f44336 !important; /* Pink/Red */
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Efeito de Hover (Aquele círculo suave que você vê nos exemplos) */
+.btn-edit:hover,
+.btn-delete:hover {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+  border-radius: 50% !important;
+}
+
+/* Ajuste do ícone */
+.action-cell mat-icon {
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+}
+
+.table-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background-color: #ffffff;
+  border-radius: 8px 8px 0 0; /* Arredonda só o topo */
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.export-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toolbar-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #666;
+  text-transform: uppercase;
+  margin-right: 8px;
+}
+
+.search-field {
+  width: 300px;
+  margin-bottom: -1.25em; /* Ajuste para alinhar verticalmente o outline */
+}
+
+/* Remove bordas pretas e fundos cinzas automáticos */
+button[mat-icon-button],
+button[mat-raised-button],
+.export-actions button {
+  background-color: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  min-width: 40px;
+  height: 40px;
+  border-radius: 50% !important; /* Formato circular no hover */
+}
+
+/* Efeito de hover suave para todos os botões de ícone */
+button[mat-icon-button]:hover {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Ícone de PDF (Vermelho) */
+.btn-pdf {
+  color: #f44336 !important;
+}
+
+/* Ícone de Excel/CSV (Verde) */
+.btn-excel,
+.btn-csv {
+  color: #2e7d32 !important;
+}
+
+/* Ícone de Imagem (Azul ou Verde Água) */
+.btn-img {
+  color: #0288d1 !important;
+}
+
+/* Organização da Barra de Ferramentas */
+.table-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  margin-bottom: 8px;
+  background: #fff;
+  border-radius: 8px;
 }

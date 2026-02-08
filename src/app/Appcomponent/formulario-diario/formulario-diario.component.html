@@ -1,202 +1,153 @@
-<mat-card class="form-card"> 
+<mat-card class="form-header-card">
   <mat-card-header>
-    <mat-card-title style="color: white">Registro Diário</mat-card-title>
+    <mat-icon mat-card-avatar color="primary">edit_note</mat-icon>
+    <mat-card-title>Registro Diário</mat-card-title>
+    <mat-card-subtitle>Monitore sua rotina e evolução</mat-card-subtitle>
   </mat-card-header>
+</mat-card>
 
-  <form [formGroup]="registroForm" (ngSubmit)="salvar()" class="registro-grid">
-    <mat-form-field class="space" appearance="outline" color="primary">
-      <mat-label>Data do Registro</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="dataRegistro" />
-      <mat-datepicker-toggle
-        matIconSuffix
-        [for]="picker"
-      ></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
+<mat-card class="form-card main-content">
+  <form [formGroup]="registroForm" (ngSubmit)="salvar()" class="registro-form">
+    <h3 class="section-title"><mat-icon>person</mat-icon> Geral</h3>
+    <div class="grid-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Data do Registro</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          formControlName="dataRegistro"
+        />
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Horas de Sono</mat-label>
+        <mat-select formControlName="horasSono">
+          @for (hora of horasSono; track hora) {
+            <mat-option [value]="hora">{{ hora }} Horas</mat-option>
+          }
+        </mat-select>
+        <mat-icon matPrefix>bedtime</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Gastos Totais (R$)</mat-label>
+        <input matInput type="number" formControlName="gastosTotal" />
+        <span matTextPrefix>R$&nbsp;</span>
+      </mat-form-field>
+    </div>
+
+    <h3 class="section-title"><mat-icon>restaurant</mat-icon> Alimentação</h3>
+    <div class="grid-row four-columns">
+      <mat-form-field appearance="outline">
+        <mat-label>Café da Manhã</mat-label>
+        <mat-select formControlName="cafeManha" multiple>
+          @for (item of cafeManha; track item) {
+            <mat-option [value]="item">{{ item }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Almoço</mat-label>
+        <mat-select formControlName="almoco" multiple>
+          @for (item of almoco; track item) {
+            <mat-option [value]="item">{{ item }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Lanche</mat-label>
+        <mat-select formControlName="lanche" multiple>
+          @for (item of lanche; track item) {
+            <mat-option [value]="item">{{ item }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Janta</mat-label>
+        <mat-select formControlName="janta" multiple>
+          @for (item of janta; track item) {
+            <mat-option [value]="item">{{ item }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <h3 class="section-title"><mat-icon>bolt</mat-icon> Performance</h3>
+    <div class="grid-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Saúde/Suplementos</mat-label>
+        <mat-select formControlName="saude" multiple>
+          @for (item of saude; track item) {
+            <mat-option [value]="item">{{ item }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Atividade Física</mat-label>
+        <mat-select formControlName="atividadefisica" multiple>
+          @for (item of atividadefisica; track item) {
+            <mat-option [value]="item">{{ item }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Horas de Estudo</mat-label>
+        <mat-select formControlName="estudoHoras">
+          @for (h of estudoHoras; track h) {
+            <mat-option [value]="h">{{ h }} Horas</mat-option>
+          }
+        </mat-select>
+        <mat-icon matPrefix>menu_book</mat-icon>
+      </mat-form-field>
+    </div>
+
+    <h3 class="section-title">
+      <mat-icon>videogame_asset</mat-icon> Lazer e Foco
+    </h3>
+    <div class="grid-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Jogos</mat-label>
+        <mat-select formControlName="jogos" multiple>
+          @for (item of jogos; track item) {
+            <mat-option [value]="item">{{ item }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Distração</mat-label>
+        <mat-select formControlName="distracao" multiple>
+          @for (item of distracao; track item) {
+            <mat-option [value]="item">{{ item }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Observações do Dia</mat-label>
+      <textarea
+        matInput
+        rows="3"
+        formControlName="observacoes"
+        placeholder="Como foi seu dia?"
+      ></textarea>
     </mat-form-field>
 
-    <mat-form-field class="space" appearance="outline" color="primary">
-      <mat-label>Horas de Sono</mat-label>
-      <mat-select formControlName="horasSono">
-        @for (hora of horasSono; track hora) {
-        <mat-option [value]="hora">{{ hora }} Horas</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field class="space" appearance="outline" color="primary">
-      <mat-label>Café da Manhã</mat-label>
-      <mat-select formControlName="cafeManha" multiple>
-        <div class="select-all-container">
-          <mat-checkbox
-            color="primary"
-            [checked]="isAllSelected('cafeManha', cafeManha)"
-            (change)="toggleAll('cafeManha', cafeManha, $event.checked)"
-          >
-            Selecionar Todos
-          </mat-checkbox>
-        </div>
-        <mat-divider></mat-divider>
-        @for (item of cafeManha; track item) {
-        <mat-option [value]="item">{{ item }}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
-
-    <!-- <mat-form-field class="space" appearance="outline" color="primary">
-      <mat-label>Almoço</mat-label>
-      <mat-select formControlName="almoco">
-        @for (cafe of Almoco; track cafe) {
-        <mat-option [value]="cafe">{{ cafe }}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field> -->
-
-    <mat-form-field class="space" appearance="outline" color="primary">
-      <mat-label>Almoço</mat-label>
-      <mat-select formControlName="almoco" multiple>
-        <div class="select-all-container">
-          <mat-checkbox
-            color="primary"
-            [checked]="isAllSelected('almoco', almoco)"
-            (change)="toggleAll('almoco', almoco, $event.checked)"
-          >
-            Selecionar Todos
-          </mat-checkbox>
-        </div>
-        <mat-divider></mat-divider>
-        @for (item of almoco; track item) {
-        <mat-option [value]="item">{{ item }}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field class="space" appearance="outline" color="primary">
-      <mat-label>Lanche</mat-label>
-      <mat-select formControlName="lanche" multiple>
-        <div class="select-all-container">
-          <mat-checkbox
-            color="primary"
-            [checked]="isAllSelected('lanche', lanche)"
-            (change)="toggleAll('lanche', lanche, $event.checked)"
-          >
-            Selecionar Todos
-          </mat-checkbox>
-        </div>
-        <mat-divider></mat-divider>
-        @for (item of lanche; track item) {
-        <mat-option [value]="item">{{ item }}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field class="space" appearance="outline" color="primary">
-      <mat-label>Janta</mat-label>
-      <mat-select formControlName="janta" multiple>
-        <div class="select-all-container">
-          <mat-checkbox
-            color="primary"
-            [checked]="isAllSelected('janta', janta)"
-            (change)="toggleAll('janta', janta, $event.checked)"
-          >
-            Selecionar Todos
-          </mat-checkbox>
-        </div>
-        <mat-divider></mat-divider>
-        @for (item of janta; track item) {
-        <mat-option [value]="item">{{ item }}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field class="space" appearance="outline" color="primary">
-      <mat-label>Saúde</mat-label>
-      <mat-select formControlName="saude" multiple>
-        <div class="select-all-container">
-          <mat-checkbox
-            color="primary"
-            [checked]="isAllSelected('saude', saude)"
-            (change)="toggleAll('saude', saude, $event.checked)"
-          >
-            Selecionar Todos
-          </mat-checkbox>
-        </div>
-        <mat-divider></mat-divider>
-        @for (item of saude; track item) {
-        <mat-option [value]="item">{{ item }}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field class="space" appearance="outline" color="primary">
-      <mat-label>Atividade Fisica</mat-label>
-      <mat-select formControlName="atividadefisica" multiple>
-        <div class="select-all-container">
-          <mat-checkbox
-            color="primary"
-            [checked]="isAllSelected('atividadefisica', atividadefisica)"
-            (change)="
-              toggleAll('atividadefisica', atividadefisica, $event.checked)
-            "
-          >
-            Selecionar Todos
-          </mat-checkbox>
-        </div>
-        <mat-divider></mat-divider>
-        @for (item of atividadefisica; track item) {
-        <mat-option [value]="item">{{ item }}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field class="space" appearance="outline" color="primary">
-      <mat-label>Horas de Estudo</mat-label>
-      <mat-select formControlName="estudoHoras">
-        @for (cafe of estudoHoras; track cafe) {
-        <mat-option [value]="cafe">{{ cafe }} Horas</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field class="space" appearance="outline" color="primary">
-      <mat-label>Jogos</mat-label>
-      <mat-select formControlName="jogos" multiple>
-        <div class="select-all-container">
-          <mat-checkbox
-            color="primary"
-            [checked]="isAllSelected('jogos', jogos)"
-            (change)="toggleAll('jogos', jogos, $event.checked)"
-          >
-            Selecionar Todos
-          </mat-checkbox>
-        </div>
-        <mat-divider></mat-divider>
-        @for (item of jogos; track item) {
-        <mat-option [value]="item">{{ item }}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field class="space" appearance="outline" color="primary">
-      <mat-label>Distracao</mat-label>
-      <mat-select formControlName="distracao">
-        @for (cafe of distracao; track cafe) {
-        <mat-option [value]="cafe">{{ cafe }}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field class="space" appearance="outline" color="accent">
-      <mat-label>Gastos Totais (R$)</mat-label>
-      <input matInput type="number" formControlName="gastosTotal" />
-      <span matTextPrefix>R$&nbsp;</span>
-    </mat-form-field>
-
-    <mat-form-field class="space" appearance="outline" class="full-width">
-      <mat-label>Observações</mat-label>
-      <textarea matInput rows="3" formControlName="observacoes"></textarea>
-    </mat-form-field>
-
-    <div class="actions">
+    <div class="form-actions">
+      <button mat-button type="button" (click)="registroForm.reset()">
+        Limpar
+      </button>
       <button
         mat-raised-button
         color="primary"

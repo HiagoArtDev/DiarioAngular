@@ -9,6 +9,7 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip'; // 1. Importe o módulo
 
 @Component({
   selector: 'app-relatorio-diario',
@@ -22,6 +23,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatInputModule,
     MatFormFieldModule,
     MatIconModule,
+    MatTooltipModule,
   ],
   templateUrl: './relatorio-diario.component.html',
   styleUrl: './relatorio-diario.component.css',

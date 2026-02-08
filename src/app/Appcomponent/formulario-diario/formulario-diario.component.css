@@ -1,81 +1,47 @@
-.form-card {
-  max-width: 100%;
+.registro-form {
   padding: 20px;
 }
 
-.registro-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin: 20px;
-
-  @media (max-width: 600px) {
-    grid-template-columns: 1fr;
-  }
+.form-header-card {
+  margin-bottom: 10px;
 }
 
-.space {
-  margin: 5px;
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0px 0 16px;
+  color: #673ab7;
+  font-weight: 500;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+
+.mat-mdc-form-field-subscript-wrapper .mat-mdc-form-field-bottom-align {
+  margin: 0px;
+  padding: 0px;
+}
+
+.grid-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
 }
 
 .full-width {
-  grid-column: 1 / -1;
+  width: 100%;
 }
 
-.actions {
-  grid-column: 1 / -1;
+.form-actions {
   display: flex;
   justify-content: flex-end;
-  margin-top: 10px;
+  gap: 12px;
+  margin-top: 24px;
 }
 
-mat-card-title {
-  color: #00bcd4;
-}
-
-.select-all-container {
-  padding: 8px 16px;
+.import-section {
   display: flex;
-  align-items: center;
-
-  /* // Evita que o clique feche o menu se não for em um mat-option */
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.04);
-  }
-}
-
-/* // Opcional: Ajuste para o divider */
-mat-divider {
-  margin-bottom: 4px;
-}
-
-/* Cor ao passar o mouse (Hover) */
-.mat-mdc-option:hover:not(.mat-mdc-option-disabled) {
-  background-color: rgba(
-    0,
-    188,
-    212,
-    0.1
-  ) !important; /* Cyan com 10% de opacidade */
-}
-
-/* Cor quando a opção está selecionada */
-.mat-mdc-option.mat-mdc-selected:not(.mat-mdc-option-disabled) {
-  background-color: rgba(
-    0,
-    188,
-    212,
-    0.2
-  ) !important; /* Cyan com 20% de opacidade */
-}
-
-/* Cor do checkbox e do texto quando selecionado */
-.mat-mdc-option.mat-mdc-selected
-  .mdc-checkbox__native-control:enabled:checked
-  ~ .mdc-checkbox__background {
-  background-color: #ff9800 !important; /* Orange para o Checkbox */
-  border-color: #ff9800 !important;
-}
-
-.mat-mdc-option.mat-mdc-selected .mat-mdc-option-text {
-  color: #00bcd4 !important; /* Cyan para o Texto */
+  justify-content: flex-end;
+  margin-bottom: 16px;
 }

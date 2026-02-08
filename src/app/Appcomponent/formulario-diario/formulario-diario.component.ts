@@ -108,7 +108,6 @@ export class FormularioDiarioComponent {
     'Fritura',
     'Carne Vermelha',
     'Macarrão',
-
     'Nada',
   ];
 
@@ -156,7 +155,7 @@ export class FormularioDiarioComponent {
   constructor(
     private fb: FormBuilder,
     private relatorioService: RelatorioService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
   ) {
     this.registroForm = this.fb.group({
       dataRegistro: [new Date(), Validators.required],
@@ -207,6 +206,7 @@ export class FormularioDiarioComponent {
         saude: this.registroForm.value.saude.join(', '),
         atividadefisica: this.registroForm.value.atividadefisica.join(', '),
         jogos: this.registroForm.value.jogos.join(', '),
+        distracao: this.registroForm.value.distracao.join(', '),
         // Converte Date object para "2026-01-04T23:50:34.000Z"
         dataRegistro: dadosBrutos.dataRegistro.toISOString(),
         // Garante que números sejam números (caso o input tenha retornado string)

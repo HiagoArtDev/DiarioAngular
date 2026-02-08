@@ -1,132 +1,187 @@
-<mat-card class="form-card">
+<mat-card class="form-header-card no-space-padding">
   <mat-card-header>
-    <mat-card-title style="color: white; margin-bottom: 15px"
-      >Registro Diário</mat-card-title
-    >
+    <mat-icon mat-card-avatar color="primary">history</mat-icon>
+    <mat-card-title>Histórico de Registros</mat-card-title>
+    <mat-card-subtitle>Visualize sua evolução diária</mat-card-subtitle>
   </mat-card-header>
+</mat-card>
+
+<mat-card class="main-content">
   <mat-card-content>
-    <div class="container">
-      <mat-form-field appearance="outline" color="primary" class="full-width">
-        <mat-label>Pesquisar registros</mat-label>
-        <input
-          matInput
-          (keyup)="applyFilter($event)"
-          placeholder="Ex: Vitamina ou 04/01"
-          #input
-        />
-      </mat-form-field>
+    <div class="table-header">
+      <div class="table-toolbar">
+        <mat-form-field appearance="outline" class="search-field">
+          <mat-label>Pesquisar registros</mat-label>
+          <input
+            matInput
+            (keyup)="applyFilter($event)"
+            placeholder="Ex: Academia"
+            #input
+          />
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
 
-      <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource" matSort>
-          <ng-container matColumnDef="dataRegistro">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Data</th>
-            <td mat-cell *matCellDef="let row">
-              {{ row.dataRegistro | date : "dd/MM/yyyy HH:mm" }}
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="horasSono">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Sono(h)</th>
-            <td mat-cell *matCellDef="let row">{{ row.horasSono }}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="cafeManha">
-            <th mat-header-cell *matHeaderCellDef>Café</th>
-            <td mat-cell *matCellDef="let row">{{ row.cafeManha }}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="almoco">
-            <th mat-header-cell *matHeaderCellDef>Almoço</th>
-            <td mat-cell *matCellDef="let row">{{ row.almoco }}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="lanche">
-            <th mat-header-cell *matHeaderCellDef>Lanche</th>
-            <td mat-cell *matCellDef="let row">{{ row.lanche }}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="janta">
-            <th mat-header-cell *matHeaderCellDef>Janta</th>
-            <td mat-cell *matCellDef="let row">{{ row.janta }}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="saude">
-            <th mat-header-cell *matHeaderCellDef>Saúde</th>
-            <td mat-cell *matCellDef="let row">{{ row.saude }}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="atividadeFisica">
-            <th mat-header-cell *matHeaderCellDef>Att.Física</th>
-            <td mat-cell *matCellDef="let row">
-              {{ row.atividadeFisica }}
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="estudoHoras">
-            <th mat-header-cell *matHeaderCellDef>Estudo(h)</th>
-            <td mat-cell *matCellDef="let row">{{ row.estudoHoras }}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="jogos">
-            <th mat-header-cell *matHeaderCellDef>Jogos</th>
-            <td mat-cell *matCellDef="let row">{{ row.jogos }}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="distracao">
-            <th mat-header-cell *matHeaderCellDef>Distração</th>
-            <td mat-cell *matCellDef="let row">{{ row.distracao }}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="gastosTotal">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Gastos</th>
-            <td mat-cell *matCellDef="let row">
-              {{ row.gastosTotal | currency : "BRL" }}
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="acoes">
-            <th mat-header-cell *matHeaderCellDef>Ações</th>
-            <td mat-cell *matCellDef="let row">
-              <button
-                mat-icon-button
-                color="primary"
-                (click)="editarRegistro(row)"
-                matTooltip="Editar"
-              >
-                <mat-icon>edit</mat-icon>
-              </button>
-
-              <button
-                mat-icon-button
-                color="accent"
-                (click)="excluirRegistro(row)"
-                matTooltip="Excluir"
-              >
-                <mat-icon>delete</mat-icon>
-              </button>
-            </td>
-          </ng-container>
-
-          <!-- <ng-container matColumnDef="observacoes">
-            <th mat-header-cell *matHeaderCellDef>Obs</th>
-            <td mat-cell *matCellDef="let row">{{ row.observacoes }}</td>
-          </ng-container> -->
-
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-
-          <tr class="mat-row" *matNoDataRow>
-            <td class="mat-cell" colspan="5">
-              Nenhum dado encontrado para o filtro "{{ input.value }}"
-            </td>
-          </tr>
-        </table>
-
-        <mat-paginator
-          [pageSizeOptions]="[5, 10, 25, 100]"
-          aria-label="Selecionar página"
-        ></mat-paginator>
+        <div class="export-actions">
+          <span class="toolbar-label">Exportar:</span>
+          <button mat-icon-button class="btn-excel" matTooltip="Excel">
+            <mat-icon>description</mat-icon>
+          </button>
+          <button mat-icon-button class="btn-pdf" matTooltip="PDF">
+            <mat-icon>picture_as_pdf</mat-icon>
+          </button>
+          <button mat-icon-button class="btn-img" matTooltip="Imagem">
+            <mat-icon>image</mat-icon>
+          </button>
+          <button mat-icon-button class="btn-csv" matTooltip="CSV">
+            <mat-icon>insert_drive_file</mat-icon>
+          </button>
+        </div>
       </div>
+    </div>
+
+    <div class="responsive-table">
+      <table mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="dataRegistro">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Data</th>
+          <td mat-cell *matCellDef="let row" class="date-cell">
+            <strong>{{ row.dataRegistro | date: "dd/MM" }}</strong>
+            <!-- <span class="year-text">{{ row.dataRegistro | date: "yyyy" }}</span> -->
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="horasSono">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Sono</th>
+          <td mat-cell *matCellDef="let row">
+            <div class="cell-with-icon">
+              <mat-icon class="mini-icon">bedtime</mat-icon>
+              {{ row.horasSono }}h
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="cafeManha">
+          <th mat-header-cell *matHeaderCellDef>Café</th>
+          <td mat-cell *matCellDef="let row">
+            <span class="truncate-text" [matTooltip]="row.cafeManha">{{
+              row.cafeManha
+            }}</span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="almoco">
+          <th mat-header-cell *matHeaderCellDef>Almoço</th>
+          <td mat-cell *matCellDef="let row">
+            <span class="truncate-text" [matTooltip]="row.almoco">{{
+              row.almoco
+            }}</span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="lanche">
+          <th mat-header-cell *matHeaderCellDef>Lanche</th>
+          <td mat-cell *matCellDef="let row">
+            <span class="truncate-text" [matTooltip]="row.lanche">{{
+              row.lanche
+            }}</span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="janta">
+          <th mat-header-cell *matHeaderCellDef>Janta</th>
+          <td mat-cell *matCellDef="let row">
+            <span class="truncate-text" [matTooltip]="row.janta">{{
+              row.janta
+            }}</span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="saude">
+          <th mat-header-cell *matHeaderCellDef>Saúde</th>
+          <td mat-cell *matCellDef="let row">
+            <span class="truncate-text" [matTooltip]="row.saude">{{
+              row.saude
+            }}</span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="atividadeFisica">
+          <th mat-header-cell *matHeaderCellDef>Att.Física</th>
+          <td mat-cell *matCellDef="let row">
+            <span class="truncate-text" [matTooltip]="row.atividadeFisica">{{
+              row.atividadeFisica
+            }}</span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="jogos">
+          <th mat-header-cell *matHeaderCellDef>Jogos</th>
+          <td mat-cell *matCellDef="let row">
+            <span class="truncate-text" [matTooltip]="row.jogos">{{
+              row.jogos
+            }}</span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="distracao">
+          <th mat-header-cell *matHeaderCellDef>Desfoco</th>
+          <td mat-cell *matCellDef="let row">
+            <span class="truncate-text" [matTooltip]="row.distracao">{{
+              row.distracao
+            }}</span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="estudoHoras">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Estudos</th>
+          <td mat-cell *matCellDef="let row">
+            <span class="study-badge" [class.no-study]="row.estudoHoras === 0">
+              {{ row.estudoHoras }}h
+            </span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="gastosTotal">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Gastos</th>
+          <td mat-cell *matCellDef="let row" class="price-text">
+            {{ row.gastosTotal | currency: "BRL" }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="acoes">
+          <th mat-header-cell *matHeaderCellDef>Ações</th>
+          <td mat-cell *matCellDef="let row" class="action-cell">
+            <button
+              mat-icon-button
+              class="btn-edit"
+              (click)="editarRegistro(row)"
+              matTooltip="Editar"
+            >
+              <mat-icon>edit_note</mat-icon>
+            </button>
+
+            <button
+              mat-icon-button
+              class="btn-delete"
+              (click)="excluirRegistro(row)"
+              matTooltip="Excluir"
+            >
+              <mat-icon>delete_outline</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr
+          mat-row
+          *matRowDef="let row; columns: displayedColumns"
+          class="hover-row"
+        ></tr>
+      </table>
+
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 25]"
+        showFirstLastButtons
+      ></mat-paginator>
     </div>
   </mat-card-content>
 </mat-card>
