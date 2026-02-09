@@ -1,6 +1,9 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav mode="side" opened class="sidenav">
-    <mat-toolbar color="primary">Relatório Diário</mat-toolbar>
+    <mat-toolbar style="border-bottom: 1px solid rgba(0, 0, 0, 0.144)">
+      <mat-icon class="menu-icon">history_edu</mat-icon>
+      Relatório Diário
+    </mat-toolbar>
 
     <mat-nav-list>
       <mat-expansion-panel class="mat-elevation-z0 menu-painel">
@@ -42,7 +45,11 @@
           <span matListItemTitle>Formulário</span>
         </a>
 
-        <a mat-list-item routerLink="/relatorio-diario" routerLinkActive="active-link">
+        <a
+          mat-list-item
+          routerLink="/relatorio-diario"
+          routerLinkActive="active-link"
+        >
           <mat-icon matListItemIcon>view_list</mat-icon>
           <span matListItemTitle>Registros</span>
         </a>
@@ -56,7 +63,7 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar style="border-bottom: 1px solid rgba(0, 0, 0, 0.144)">
       <button mat-icon-button (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
