@@ -207,3 +207,10 @@ button[mat-icon-button]:hover {
   background: #fff;
   border-radius: 8px;
 }
+
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}

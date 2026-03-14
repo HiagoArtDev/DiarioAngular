@@ -11,6 +11,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip'; // 1. Importe o módulo
 
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
+import { MatDialog } from '@angular/material/dialog';
+import { RelatorioDiarioDialogComponent } from '../relatorio-diario/relatorio-diario-dialog/relatorio-diario-dialog.component';
+
 @Component({
   selector: 'app-relatorio-diario',
   standalone: true,
@@ -24,6 +29,7 @@ import { MatTooltipModule } from '@angular/material/tooltip'; // 1. Importe o m�
     MatFormFieldModule,
     MatIconModule,
     MatTooltipModule,
+    MatProgressSpinnerModule,
   ],
   templateUrl: './relatorio-diario.component.html',
   styleUrl: './relatorio-diario.component.css',
@@ -51,7 +57,12 @@ export class RelatorioDiarioComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private relatorioService: RelatorioService) {}
+  loading: boolean = false;
+
+  constructor(
+    private relatorioService: RelatorioService,
+    private dialog: MatDialog,
+  ) {}
 
   ngOnInit(): void {
     this.getListRelatorioDiario();
@@ -67,11 +78,15 @@ export class RelatorioDiarioComponent implements OnInit {
   }
 
   getListRelatorioDiario() {
+    this.loading = true; // inicia spinner
+
     this.relatorioService.getTabelaRelatorio().subscribe({
       next: (res) => {
         this.dataSource.data = res;
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
+
+        this.loading = false; // para spinner
 
         console.log(res);
       },
@@ -84,6 +99,21 @@ export class RelatorioDiarioComponent implements OnInit {
   editarRegistro(row: any) {
     console.log('Editando registro:', row.registroID);
     // Aqui você poderia abrir um Dialog ou navegar para a página de edição
+
+    const dialogRef = this.dialog.open(RelatorioDiarioDialogComponent, {
+      width: '1200px',
+      data: row,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        console.log('Dados editados', result);
+
+        // chamar API update aqui
+
+        this.getListRelatorioDiario();
+      }
+    });
   }
 
   excluirRegistro(row: any) {
